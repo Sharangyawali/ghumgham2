@@ -1,0 +1,12 @@
+
+ .leaflet-routing-container{
+    display:none !important;
+}
+
+.leaflet-popup-close-button{
+    display:none !important;
+} 
+
+.image{
+    max-width: 100%;
+}

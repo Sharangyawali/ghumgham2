@@ -1,0 +1,35 @@
+label {
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+input {
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid #555;
+    border-radius: 2px;
+    padding: 0.6rem 1rem;
+    line-height: 1.3rem;
+}
+
+select {
+    padding: 0.5rem 0.5rem;
+    border-radius: 2px;
+    border: 1px solid #555;
+}
+
+select:focus {
+    border: 2px solid black;
+}
+
+textarea {
+    border: 1px solid #555;
+    resize: none;
+    padding: 8px;
+
+}
+
+textarea.ta10em {
+    height: 6.8em;
+}

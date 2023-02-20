@@ -1,0 +1,86 @@
+.search-box {
+    border: 2px solid black;
+    height: 50px;
+    border-radius: 50px;
+    padding: 8px;
+}
+
+.search-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-text {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 2px;
+    color: black;
+    font-size: 16px;
+    transition: 0.5s;
+    line-height: 40px;
+    width:0px;
+}
+
+.search-box:hover > .search-text{
+    width: 170px;
+    padding: 0 6px;
+}
+
+.search-text:focus {
+    width: 170px;
+    padding: 0 6px;
+}
+
+
+.user-option ul li:hover {
+    background-color: #fe7191;
+} 
+
+.user-option ul li {
+    width: 100%;
+    padding: 1em 1.5em;
+}
+
+.nav__menu {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100vh;
+    padding: 2.4rem 1.5rem 4rem;
+    border-radius: 1.5rem 1.5rem 0 0; 
+    transition: .3sec;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    z-index: 999999;
+}
+
+.show-menu {
+    bottom: 0;
+}
+
+.Ghumfir{
+    
+    padding-top: 13px;
+    text-align: center;
+    height:70px;
+    font-size:xx-large;
+    color: rgb(24, 24, 25);
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.sidebar{
+    position:absolute;
+    z-index: 999;
+    width:260px;
+    height: 300px;
+}
+.container{
+    height:345px;
+}
+
+.container2{
+}

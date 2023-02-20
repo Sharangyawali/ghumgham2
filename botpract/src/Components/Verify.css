@@ -1,0 +1,26 @@
+main {
+    height: 100vh;
+    background: url('../assets/Wave.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a {
+    cursor: pointer;
+}
+
+.goLink {
+    transition: all ease-in 300ms;
+}
+
+.goLink:hover {
+    background-color: #ff8585 ;
+    color: black;
+}
+
+.socials:hover {
+    scale: 1.1;
+}
+.socials:hover {
+    color: #ff8585;
+}

@@ -1,0 +1,30 @@
+main{
+    background: url('../assets/Wave.svg');
+    background-repeat: no-repeat; 
+    background-size: cover;  
+}
+
+.navb{
+    position:relative;
+    z-index: 999;
+    height:70px;
+}
+ .sel{
+    height:70px;
+    background-color: white;
+} 
+
+.listmap{
+    background-color: white;
+    height:595px;
+}
+
+.list{
+    height: 595px;
+}
+
+.map{
+    position: relative;
+    height:595 px;
+}
+
