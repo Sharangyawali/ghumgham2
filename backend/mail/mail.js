@@ -1,4 +1,5 @@
 const nodemailer=require('nodemailer')
+require('dotenv').config()
 const sendverifymail=async(name,email,_id)=>{
     try {
         let mailTransporter= nodemailer.createTransport({
@@ -7,8 +8,8 @@ const sendverifymail=async(name,email,_id)=>{
             secure:false,
             requireTLS:true,
             auth:{
-                user:"ghumfirproduction@gmail.com",
-                pass:'ltqajuvygqwjgqia'
+                user:process.env.USER,
+                pass:process.env.PASS
             }
         })
         let details={

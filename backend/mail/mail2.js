@@ -1,4 +1,5 @@
 const nodemailer=require('nodemailer')
+require('dotenv').config()
 const sendresetmail=async(name,email,_id,token)=>{
     try {
         let mailTransporter= nodemailer.createTransport({
@@ -7,8 +8,8 @@ const sendresetmail=async(name,email,_id,token)=>{
             secure:false,
             requireTLS:true,
             auth:{
-                user:"ghumfirproduction@gmail.com",
-                pass:'ltqajuvygqwjgqia'
+                user:process.env.USER,
+                pass:process.env.PASS
             }
         })
         let details={

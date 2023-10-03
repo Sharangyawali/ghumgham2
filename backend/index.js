@@ -1,4 +1,5 @@
 const express=require('express')
+require('dotenv').config()
 const cors=require('cors')
 require('./db/connectdb')
 const placemodel=require('./db/localeateries')
@@ -8,12 +9,12 @@ const multer=require('multer')
 const app=express()
 const jwt=require('jsonwebtoken');
 const sendresetmail = require('./mail/mail2');
-const jwtKey='KTBHJK'
+const jwtKey=process.env.JWTKEY
 app.use(cors())
 app.use(express.json())
 app.use('/images',express.static('./images'))
-const port=process.env.PORT||5000
-
+const port=process.env.PORT
+console.log(port)
  const fileStorageEngine=multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,'./images')
