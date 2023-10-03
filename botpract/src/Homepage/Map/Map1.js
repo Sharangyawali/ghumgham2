@@ -13,30 +13,40 @@ const markerIcon = new L.icon({
   
   iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png",
   iconSize: [35, 45],
-  iconAnchor: [17, 40],
+  iconAnchor: [17, 43],
   popupAnchor: [2, -5],
 });
 
 
 const Map1 = (props) => {
   const markerIcon1 = new L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png",
-    iconSize: [35, 45],
-    iconAnchor: [17, 40],
+    iconUrl: require(props.selects===`Local Eateries`?`./localeateries.png`:props.selects===`Hotels`?'./hotels.png':props.selects===`Restaurants`?'./restaurant.png':'./attractionsites.png'),
+    iconSize: [35, 35],
+    iconAnchor: [17, 33],
     popupAnchor: [2, -5],
   });
+  const markerIcon2=(category)=>new L.icon({
+    iconUrl:require(category===`Local Eateries`?`./localeateries.png`:category===`Hotels`?'./hotels.png':category===`Hotels`?'./restaurant.png':'./attractionsites.png'),
+    iconSize: [35, 35],
+    iconAnchor: [17, 33],
+    popupAnchor: [2, -5],
+  })
   const fillBlueOptios = { fillColor: "blue" };
   const ZOOM_LEVEL = 14;
   const mapRef = useRef();
   const location = Geolocation();
   const data=props.fildata
+  const minzoom=12
+  const maxbound=[[27.563366,85.166683],[27.789086,85.504413]]
   if (location.loaded && !location.error) {
     return (
       <>
       <div style={{ position: 'relative' }} >
-        <MapContainer
+        <MapContainer 
           center={[location.coordinates.lat, location.coordinates.lng]}
+          minZoom={minzoom}
           zoom={ZOOM_LEVEL}
+          maxBounds={maxbound}
           ref={mapRef}
         >
           <TileLayer
@@ -48,7 +58,7 @@ const Map1 = (props) => {
             pathOptions={fillBlueOptios}
             radius={5000}
           />
-          <Marker
+          <Marker className='z-10'
             position={[location.coordinates.lat, location.coordinates.lng]}
             icon={markerIcon}
           >
@@ -60,7 +70,7 @@ const Map1 = (props) => {
             (props.search.map((data, i) => (
             <Marker key={i}
               position={[data.latitude, data.longitude]}
-              icon={markerIcon1}
+              icon={markerIcon2(data.category)}
             >
             {(props.click===true?<Routing clat={location.coordinates.lat} clng={location.coordinates.lng} lat={props.lat} lng={props.lng} ></Routing>:"")}
               <Popup>
@@ -75,13 +85,13 @@ const Map1 = (props) => {
               </Popup>
             </Marker>
           )))
-          :
-          (data.map((data, i) => (
+          :(props.click===false?
+          (data.map((data, i) => 
+            (
             <Marker key={i}
               position={[data.latitude, data.longitude]}
               icon={markerIcon1}
             >
-            {(props.click===true?<Routing clat={location.coordinates.lat} clng={location.coordinates.lng} lat={props.lat} lng={props.lng} ></Routing>:"")}
               <Popup>
               <div className="">
               <img className="imav" src={"http://localhost:5000/" +data.avatar}/>
@@ -96,8 +106,14 @@ const Map1 = (props) => {
               </div>
               </Popup>
             </Marker>
-          )))
+            )
+          )):<Marker 
+          position={[props.lat,props.lng]}
+          icon={markerIcon1}
+          >
+          </Marker>)
           }
+          {(props.click===true?<Routing clat={location.coordinates.lat} clng={location.coordinates.lng} lat={props.lat} lng={props.lng} selects={props.selects} search={props.search}></Routing>:"")}
         </MapContainer>
       </div>
       </>

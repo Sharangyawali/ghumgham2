@@ -10,7 +10,7 @@ description:String,
 latitude:Number,
 longitude:Number,
 avatar:String,
-num_reviews:String,
+num_reviews:Number,
 isVerified:{
     type:Boolean,
     default:false,

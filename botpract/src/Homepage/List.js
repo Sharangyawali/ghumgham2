@@ -9,9 +9,13 @@ const List = ( props ) => {
         props.setQ(props.data.latitude)
         props.setR(props.data.longitude)
         }
+        const handleonCLick2=()=>{
+          props.showdiv()
+          props.setH(props.data)
+        }
   return (
-    <div>
-      <div className='shadow-lg mt-3  mb-4 w-[450px] cursor-pointer'>
+    <div className=''>
+      <div className='shadow-md border-2 border-slate-300 bg-white  mb-4 w-[450px] cursor-pointer'>
         <div className='ml-6'>
         <img src={"http://localhost:5000/" + props.data.avatar} className="h-[300px] w-[400px]" />
         </div>
@@ -30,10 +34,11 @@ const List = ( props ) => {
           <div className='flex justify-between mb-2 py-1'>
             <p>{props.data.description}</p>
           </div>
-              <div className=' grid grid-cols-3 mt-4'>
-                <GoLocation type="submit" onClick={handleonclick} size={"2rem"} color={"blue"}/>
+              <div className=' flex justify-between mt-4 mb-3'>
+                <GoLocation className='hover:scale-110' type="submit" onClick={handleonclick} size={"1.5rem"} color={"blue"}/>
                 <p className='col-span-2 text-[12px]'>{props.data.location}</p>
               </div>
+              <button className='bg-secondary-color px-2 py-1 rounded-lg text-[12px] mb-1' onClick={handleonCLick2}>Add reviews</button>
         </div>
       </div>
     </div>

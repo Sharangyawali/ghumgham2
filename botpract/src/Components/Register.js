@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
@@ -14,6 +15,11 @@ const Register = () => {
   const [age, setAge] = useState("");
   const [errors, setErrors] = useState(false);
   const [double, setDouble] = useState(false);
+  const [eye, setEye] = useState(true)
+
+  const toggleChange = () => {
+      setEye((prev) => !prev)
+  }
 
   useEffect(() => {
     const auth = localStorage.getItem("user");
@@ -49,7 +55,7 @@ const Register = () => {
   };
   return (
     <main className="flex h-screen justify-center items-center overflow-hidden">
-      <div className="container w-[90%] h-[85%] flex border-2 border-gray-200 rounded-md shadow-lg tablet:w-[60%] laptop:w-[60%] tablet:justify-center">
+      <div className="container1 w-[90%] h-[80%] flex border-2 border-gray-200 rounded-md shadow-lg tablet:w-[60%] laptop:w-[60%] tablet:justify-center">
         <div className="left hidden desktop:flex desktop:flex-1 laptop:flex laptop:w-[50%]">
           <div className="showcase flex flex-col items-center justify-center h-[100vh] mx-auto">
             <div className="showcase-content">
@@ -74,7 +80,7 @@ const Register = () => {
             <form className="w-[100%] pb-[8px]" onSubmit={collectdata}>
               <div>
                 <label
-                  htmlfor="Name"
+                  htmlFor="Name"
                   className="text-[16px] leading-[32px] font-semibold"
                 >
                   Username
@@ -121,7 +127,7 @@ const Register = () => {
                   ""
                 )}
               </div>
-              <div>
+              <div className="relative">
                 <label
                   htmlFor="name"
                   className="text-[16px] leading-[32px] font-semibold"
@@ -129,11 +135,12 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  type={"password"}
+                  type={eye ? "password" : "text" }
                   value={password}
                   className="text-input"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                   {eye ? <AiFillEye className='absolute top-[40px] right-[12px] cursor-pointer' size={20} onClick={toggleChange} /> : <AiFillEyeInvisible className='absolute top-[40px] right-[12px] cursor-pointer' size={20} onClick={toggleChange} /> }
                 {errors && password.length <= 5 ? (
                   <p className="text-[10px] italic text-red-600">
                     Password must be of atleast 6 characters
@@ -151,6 +158,7 @@ const Register = () => {
                 </label>
                 <input
                   type="number"
+                  min={0}
                   max={100}
                   value={age}
                   className="text-input"

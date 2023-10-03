@@ -17,6 +17,7 @@ const Places = (props) => {
  const handleOnChange=(e)=>{
     setSelects(e.target.value)
     props.setP({})
+    props.setA(false)
   }
   return (
     <div>
@@ -24,7 +25,7 @@ const Places = (props) => {
         <option>Restaurants</option>
         <option>Hotels</option>
         <option>Local Eateries</option>
-        <option>Attraction sites</option>
+        <option>Attraction Sites</option>
       </select>
     </div>
   );

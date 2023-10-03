@@ -51,7 +51,7 @@ app.post('/addplace',upload.single('avatar'),(req,res)=>{
 
 
 app.get('/place',async(req,res)=>{
-    let data=await placemodel.find()
+    let data=await placemodel.find({"isVerified":true})
     if(data){(res.send(data))}
 
 })
@@ -71,7 +71,6 @@ app.post("/register",async(req,res)=>{
 
 app.put('/verify',async(req,res)=>{
     try {
-        
         let updateinfo=  await users.updateOne({_id:req.query.id},{$set:{isUserVerified:true}})
       res.send(updateinfo)
       } catch (error) {
@@ -122,7 +121,7 @@ app.post('/forgetpassword',async(req,res)=>{
         let result=await users.findOne({auth:req.query.token})
         if(result){
         try {
-            let data=  await users.updateOne({_id:req.query.id},{$set:{"password":req.body.password}})
+            let data=  await users.updateOne({_id:req.query.id},{$set:{password:req.body.password}})
           res.send(data)
           } catch (error) {
             return res.status(400)
@@ -134,6 +133,20 @@ app.post('/forgetpassword',async(req,res)=>{
             .json({success:false,error:"Error in verification"})
         }
     }
+    })
+
+    app.put('/addreviews',async(req,res)=>{
+        if(req.body.review){
+            let result=await placemodel.findOne({name:req.body.name})
+            if(result){
+                const prevrev=result.review
+                let newrev=((prevrev*result.num_reviews)+req.body.review)/(result.num_reviews+1)
+                const newnumreviews=result.num_reviews+1
+                newrev=newrev.toFixed(1)
+                let data=await placemodel.updateOne({name:req.body.name},{$set:{review:newrev,num_reviews:newnumreviews}})
+                res.send(data)
+            }
+        }
     })
 
 app.listen(port)

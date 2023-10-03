@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { Link, useNavigate } from "react-router-dom";
 import Register from "./Register";
 import Forgetpassword from "./Forgetpassword"
@@ -9,6 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [eye, setEye] = useState(true)
+
+const toggleChange = () => {
+    setEye((prev) => !prev)
+}
   const navigate = useNavigate();
   useEffect(() => {
     const auth = localStorage.getItem("user");
@@ -38,7 +44,7 @@ const Login = () => {
   return (
     <div>
       <main className="flex h-screen justify-center items-center overflow-hidden">
-        <div className="container w-[100%] h-[80%] flex border-2 border-gray-200 rounded-md shadow-lg tablet:w-[60%] laptop:w-[60%] tablet:justify-center">
+        <div className="container1 w-[100%] h-[80%] flex border-2 border-gray-200 rounded-md shadow-lg tablet:w-[60%] laptop:w-[60%] tablet:justify-center">
           <div className="left hidden desktop:flex desktop:flex-1 laptop:flex laptop:w-[50%]">
             <div className="showcase h-[100vh] flex items-center mx-auto">
               <div className="showcase-content">
@@ -77,7 +83,7 @@ const Login = () => {
                     }}
                   />
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="Password"
                     className="text-[16px] leading-[32px] font-semibold"
@@ -85,13 +91,15 @@ const Login = () => {
                     Password
                   </label>
                   <input
-                    type="password"
+                    type={eye ? "password" : "text" }
                     value={password}
+                    maxLength='16'
                     className="text-input"
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
                   />
+                   {eye ? <AiFillEye className='absolute top-[40px] right-[12px] cursor-pointer' size={20} onClick={toggleChange} /> : <AiFillEyeInvisible className='absolute top-[40px] right-[12px] cursor-pointer' size={20} onClick={toggleChange} /> }
                 </div>
 
                 <button type="submit" className="primary-btn">

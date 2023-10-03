@@ -1,34 +1,37 @@
 select{
-    margin-top:15px;
-    padding:3px;
-    width:170px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    margin-top:12px;
+    padding:10px;
+    width:210px;
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
     appearance: none;
     font-family:sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.5px;
     cursor: pointer;
-    background-color: #ff0067;
-    color:#ffffff;
-   border: 6px solid #ff0067;
+    color:#070000;
+   border: 1px solid #ff0067;
    border-radius: 5px;
-   background-image: url('../Components/arrow-down.png');
+   background-image: url('../Components/arrowdown2.png');
    background-repeat: no-repeat;
-   background-size: 40px;
-   background-position:127px 0 ;
+   background-size: 36px;
+   /* background-position:170px 10px ; */
    outline: none;
-   box-shadow: 0 0 20px rgba(20,20,30,0.25);
+   box-shadow: 0 0 10px rgba(20,20,30,0.25);
 }
-select::-moz-expand{
-display: none;
-}
-select:hover{
-    border:6px solid #ff66a3;
-}
+
+
 select option{
-    background-color: #ff0067;
     letter-spacing: 1.2px;
     font-weight:400;
     font-size:18px;
+    padding:20px;
+}
+
+select option:hover{
+    background-color: #ff0067;
+}
+
+option:nth-child(2):hover{
+    background-color: #ff0067;
 }

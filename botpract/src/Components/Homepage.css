@@ -10,21 +10,21 @@ main{
     height:70px;
 }
  .sel{
-    height:70px;
-    background-color: white;
+    height:0px;
 } 
 
-.listmap{
+  /* .listmap{
     background-color: white;
     height:595px;
-}
+}   */
 
 .list{
     height: 595px;
 }
 
 .map{
-    position: relative;
-    height:595 px;
+    position:relative;
+    height:660 px;
+    top:3px;
 }
 

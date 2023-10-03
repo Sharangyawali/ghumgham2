@@ -30,12 +30,15 @@ const Routing=(props)=>{
         addWaypoints:false,
         autoRoute:true,
       }).addTo(map);
-      route=r    
+       
       useEffect(()=>{
         map.on('click', function() {
-        route.spliceWaypoints(0,2);
+          // map.removeLayer(r)
+         route.spliceWaypoints(0,2);
         });
-      },[])
+        // route.spliceWaypoints(0,2)
+      },[props.search||props.selects])
+      route=r  
   return null
 }
 export default Routing

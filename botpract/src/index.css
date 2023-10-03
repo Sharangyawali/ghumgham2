@@ -24,7 +24,8 @@ code {
 }
 
 .leaflet-container{
-  height:595px;
+  height:665px;
+  /* height:595px; */
   width:100%
 }
 .login form input{

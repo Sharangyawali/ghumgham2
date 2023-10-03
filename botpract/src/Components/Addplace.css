@@ -17,6 +17,7 @@ select {
     padding: 0.5rem 0.5rem;
     border-radius: 2px;
     border: 1px solid #555;
+    background-position: 170px 1px;
 }
 
 select:focus {
@@ -32,4 +33,11 @@ textarea {
 
 textarea.ta10em {
     height: 6.8em;
+}
+select option:hover{
+    background-color: #ff0067;
+}
+
+select.decorated option:hover{
+    box-shadow:0 0 10px #1882A8 inset;
 }
